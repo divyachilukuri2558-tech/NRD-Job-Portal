@@ -1,0 +1,125 @@
+{
+  "info": {
+    "name": "Job Portal REST API (NRD Lab)",
+    "description": "Postman Collection for testing Job Portal Web Application REST APIs (JWT Authentication, Jobs, Users, Applications, Admin Analytics)",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "item": [
+    {
+      "name": "Health Check",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": { "raw": "http://localhost:5000/", "protocol": "http", "host": ["localhost"], "port": "5000", "path": [""] }
+      }
+    },
+    {
+      "name": "Auth - Login (Admin)",
+      "request": {
+        "method": "POST",
+        "header": [{ "key": "Content-Type", "value": "application/json" }],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"email\": \"admin@jobportal.com\",\n  \"password\": \"password123\"\n}"
+        },
+        "url": { "raw": "http://localhost:5000/api/auth/login", "protocol": "http", "host": ["localhost"], "port": "5000", "path": ["api", "auth", "login"] }
+      }
+    },
+    {
+      "name": "Auth - Login (Recruiter)",
+      "request": {
+        "method": "POST",
+        "header": [{ "key": "Content-Type", "value": "application/json" }],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"email\": \"sarah.jenkins@techcorp.com\",\n  \"password\": \"password123\"\n}"
+        },
+        "url": { "raw": "http://localhost:5000/api/auth/login", "protocol": "http", "host": ["localhost"], "port": "5000", "path": ["api", "auth", "login"] }
+      }
+    },
+    {
+      "name": "Auth - Login (Seeker)",
+      "request": {
+        "method": "POST",
+        "header": [{ "key": "Content-Type", "value": "application/json" }],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"email\": \"alex.morgan@example.com\",\n  \"password\": \"password123\"\n}"
+        },
+        "url": { "raw": "http://localhost:5000/api/auth/login", "protocol": "http", "host": ["localhost"], "port": "5000", "path": ["api", "auth", "login"] }
+      }
+    },
+    {
+      "name": "Jobs - Get All Active Jobs",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "http://localhost:5000/api/jobs?status=Active",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "5000",
+          "path": ["api", "jobs"],
+          "query": [{ "key": "status", "value": "Active" }]
+        }
+      }
+    },
+    {
+      "name": "Jobs - Search Jobs (Filter by keyword)",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "http://localhost:5000/api/jobs?search=Java&employment_type=Full Time",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "5000",
+          "path": ["api", "jobs"],
+          "query": [
+            { "key": "search", "value": "Java" },
+            { "key": "employment_type", "value": "Full Time" }
+          ]
+        }
+      }
+    },
+    {
+      "name": "Jobs - Get Single Job by ID",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": { "raw": "http://localhost:5000/api/jobs/1", "protocol": "http", "host": ["localhost"], "port": "5000", "path": ["api", "jobs", "1"] }
+      }
+    },
+    {
+      "name": "Applications - Submit Application (Seeker)",
+      "request": {
+        "method": "POST",
+        "header": [
+          { "key": "Content-Type", "value": "application/json" },
+          { "key": "Authorization", "value": "Bearer {{jwt_token}}" }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"jobId\": 3,\n  \"cover_note\": \"Excited to apply for the Node.js backend role!\"\n}"
+        },
+        "url": { "raw": "http://localhost:5000/api/applications", "protocol": "http", "host": ["localhost"], "port": "5000", "path": ["api", "applications"] }
+      }
+    },
+    {
+      "name": "Applications - Get My Applications (Seeker)",
+      "request": {
+        "method": "GET",
+        "header": [{ "key": "Authorization", "value": "Bearer {{jwt_token}}" }],
+        "url": { "raw": "http://localhost:5000/api/applications/my", "protocol": "http", "host": ["localhost"], "port": "5000", "path": ["api", "applications", "my"] }
+      }
+    },
+    {
+      "name": "Admin - Get Statistics",
+      "request": {
+        "method": "GET",
+        "header": [{ "key": "Authorization", "value": "Bearer {{jwt_token}}" }],
+        "url": { "raw": "http://localhost:5000/api/admin/statistics", "protocol": "http", "host": ["localhost"], "port": "5000", "path": ["api", "admin", "statistics"] }
+      }
+    }
+  ]
+}

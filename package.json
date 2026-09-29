@@ -1,0 +1,23 @@
+{
+  "name": "job-portal-web-application",
+  "version": "1.0.0",
+  "description": "Full-stack Job Portal Web Application based on NRD Lab curriculum (React, Node.js, Express, JWT, MySQL, Bootstrap, Chart.js)",
+  "scripts": {
+    "start": "node backend/server.js",
+    "backend": "cd backend && npm start",
+    "frontend": "cd frontend && npm start",
+    "build:frontend": "cd frontend && npm run build"
+  },
+  "keywords": [
+    "job-portal",
+    "nrd-lab",
+    "react",
+    "express",
+    "mysql",
+    "jwt",
+    "bootstrap",
+    "chartjs"
+  ],
+  "author": "NRD Lab",
+  "license": "ISC"
+}

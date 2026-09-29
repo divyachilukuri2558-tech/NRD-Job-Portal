@@ -292,7 +292,14 @@ Import `job_portal_postman_collection.json` into Postman to test all endpoints w
 
 ## 🖼️ Application Screenshots
 
-*(Screenshots can be added here showing Home, Job Details, Dashboards, and Chart.js Analytics)*
+### 1. Home Page
+![Job Portal Home Page](home.png)
+
+### 2. Browse Jobs
+![Browse Jobs](browse-jobs.png)
+
+### 3. Login Page
+![Login Page](login.png)
 
 ---
 
